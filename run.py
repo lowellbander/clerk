@@ -3,17 +3,23 @@ from flask import Flask
 from mongoengine import connect
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.mongorest import MongoRest
+from flask.ext.mongorest.views import ResourceView
+from flask.ext.mongorest.resources import Resource
+from flask.ext.mongorest import operators as ops
+from flask.ext.mongorest import methods
 
 app = Flask(__name__)
 app.debug = True
 
 HOST = 'mongodb://' + settings.USER + ':' + settings.PASSWORD +'@kahana.mongohq.com:' + str(settings.PORT) + '/' + settings.APP,
 
-app.config["MONGODB_DB"] = 'app26394662'
+app.config["MONGODB_DB"] = settings.APP
 connect(
-        'app26394662',
+        settings.APP,
+        username=settings.USER,
+        password=settings.PASSWORD,
         host=HOST,
-        port=10014
+        port=settings.PORT
 )
 
 db = MongoEngine(app)
@@ -22,6 +28,17 @@ api = MongoRest(app)
 @app.route('/')
 def index():
     return "heya"
+
+class Tour(db.Document):
+    date = db.DateTimeField()
+
+class TourResource(Resource):
+    document = Tour
+
+@api.register(name='tour', url = '/tour/')
+class TourView(ResourceView):
+    resource = TourResource
+    methods = [methods.Create, methods.Update, methods.Fetch, methods.List, methods.Delete]
 
 if __name__ == '__main__':
     app.run()
