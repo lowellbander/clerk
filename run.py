@@ -31,6 +31,15 @@ def index():
 
 class Tour(db.Document):
     date = db.DateTimeField()
+    name = db.StringField()
+    email = db.StringField()
+    phone = db.StringField()
+    comments = db.StringField()
+    majors_of_interest = db.StringField()
+    nVisitors = db.IntField()
+    confirmed = db.BooleanField()
+    visitor_reminded = db.BooleanField()
+    ambassador_reminded = db.BooleanField()
 
 class TourResource(Resource):
     document = Tour
