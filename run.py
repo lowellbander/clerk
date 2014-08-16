@@ -37,12 +37,12 @@ class Tour(db.Document):
     comments = db.StringField()
     majors_of_interest = db.StringField()
     nVisitors = db.IntField()
-    confirmed = db.BooleanField()
-    visitor_reminded = db.BooleanField()
-    ambassador_reminded = db.BooleanField()
 
 class TourResource(Resource):
     document = Tour
+    filters = {
+        'date' : [ops.Exact, ops.Contains],
+    }
 
 @api.register(name='tour', url = '/tour/')
 class TourView(ResourceView):
