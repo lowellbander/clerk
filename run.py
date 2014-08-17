@@ -35,6 +35,7 @@ class Tour(db.Document):
     email = db.StringField()
     phone = db.StringField()
     comments = db.StringField()
+    review = db.StringField()
     majors_of_interest = db.StringField()
     nVisitors = db.IntField()
 
