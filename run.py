@@ -1,5 +1,5 @@
 import settings
-from flask import Flask
+from flask import Flask, render_template
 from mongoengine import connect
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.mongorest import MongoRest
@@ -27,7 +27,7 @@ api = MongoRest(app)
 
 @app.route('/')
 def index():
-    return "heya"
+    return render_template("index.html")
 
 class Tour(db.Document):
     date = db.DateTimeField()
