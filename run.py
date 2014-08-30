@@ -50,5 +50,19 @@ class TourView(ResourceView):
     resource = TourResource
     methods = [methods.Create, methods.Update, methods.Fetch, methods.List, methods.Delete]
 
+class Followup(db.Document):
+    family = db.StringField()
+    guide_review = db.StringField()
+    wanting = db.StringField()
+    extraneous = db.StringField()
+
+class FollowupResource(Resource):
+    document = Followup
+
+@api.register(name='followup', url='/followup/')
+class FollowupView(ResourceView):
+    resource = FollowupResource
+    methods = [methods.Create, methods.Update, methods.Fetch, methods.List, methods.Delete]
+
 if __name__ == '__main__':
     app.run()
