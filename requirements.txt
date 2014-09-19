@@ -1,4 +1,5 @@
 Flask==0.10.1
+Flask-Cors==1.8.1
 Flask-MongoRest==0.1.1
 Flask-Views==0.2.1
 Flask-WTF==0.9.5
@@ -14,5 +15,5 @@ mongoengine==0.8.7
 pymongo==2.7.1
 python-dateutil==2.2
 python-mimeparse==0.1.4
-six==1.7.2
+six==1.8.0
 wsgiref==0.1.2

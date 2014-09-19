@@ -1,6 +1,7 @@
 import settings
 from flask import Flask, render_template
 from mongoengine import connect
+from flask.ext.cors import cross_origin, CORS
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.mongorest import MongoRest
 from flask.ext.mongorest.views import ResourceView
@@ -10,6 +11,7 @@ from flask.ext.mongorest import methods
 
 app = Flask(__name__)
 app.debug = True
+cors = CORS(app)
 
 HOST = 'mongodb://' + settings.USER + ':' + settings.PASSWORD +'@kahana.mongohq.com:' + str(settings.PORT) + '/' + settings.APP,
 
