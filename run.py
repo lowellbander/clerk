@@ -39,7 +39,7 @@ class Tour(db.Document):
     comments = db.StringField()
     review = db.StringField()
     majors_of_interest = db.StringField()
-    nVisitors = db.IntField()
+    nVisitors = db.StringField()
 
 class TourResource(Resource):
     document = Tour
