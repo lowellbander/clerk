@@ -1,7 +1,7 @@
 clerk
 =====
 
-The backend for the [UCLA Engineering Ambassador Tour Scheduler](https://github.com/lowellbander/ambassador).
+The backend for the [UCLA Engineering Ambassador Tour Scheduler](https://github.com/lowellbander/tourseas).
 
 todo
 ====
